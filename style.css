@@ -1,0 +1,57 @@
+body{
+    background-color: black;
+    height: 100vh;
+    place-items: center;
+    place-content: center;
+    
+}
+
+.outline{
+    border: 7px solid blue;
+    border-radius: 10px;
+    height: 480px;
+    width: 400px;
+    background-color: rgb(165, 183, 183);
+}
+
+.screen{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 40px;
+    height: 100px;
+    background-color: rgb(68, 108, 72);
+    
+}
+
+.keyarea{
+    margin: 40px;
+    height: 310px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 5px;
+    
+}
+
+button{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(129, 126, 126);
+}
+
+.ebutton{
+    grid-row-start: 3;
+    grid-row-end: 6;
+    grid-column-start: 5;
+    height: 121px;
+    background-color: rgb(110, 110, 234);
+}
+
+.cbutton{
+    background-color: rgb(245, 74, 74);
+}
+
+.display{
+    height: 50%;
+}
