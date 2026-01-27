@@ -1,5 +1,17 @@
 console.log("JS Connected");
 
+function updateDisplay(value) {
+  const display = document.getElementById("display");
+  display.innerText = value;
+
+  // Scroll to far right (latest digits)
+  display.scrollLeft = display.scrollWidth;
+}
+
+
+
+
+
 let display = document.getElementById("display");
 let answer = document.getElementById("answer");
 let buttons = document.querySelectorAll(".keyarea button");
@@ -34,17 +46,19 @@ buttons.forEach(function(btn){
                 else{
                     firstNum = firstNum.slice(0,-1);
                 }
-                display.innerText = firstNum + operator + secondNum;
+                updateDisplay(firstNum + operator + secondNum);
+
                 break;
 
             case '+':
             case '-':
-            case '*':
+            case 'x':
             case '/':
             case '%':
                 if (firstNum !== ""){
                     operator = value;
-                    display.innerText = firstNum + operator;
+                   updateDisplay(firstNum + operator);
+
                 }
                 break;
 
@@ -77,7 +91,7 @@ buttons.forEach(function(btn){
                      case 'x':
                         result = a * b;
                         break;
-                     case '+':
+                     case '/':
                         result = a / b;
                         break;
                      case '%':
@@ -98,10 +112,40 @@ buttons.forEach(function(btn){
                     secondNum += value;
                 }
 
-                display.innerText = firstNum + operator + secondNum;
+                updateDisplay(firstNum + operator + secondNum);
+
 
                 }
 
         }
     }
 )
+
+
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+display.addEventListener("mousedown", (e) => {
+  isDown = true;
+  display.classList.add("active");
+  startX = e.pageX - display.offsetLeft;
+  scrollLeft = display.scrollLeft;
+});
+
+display.addEventListener("mouseleave", () => {
+  isDown = false;
+});
+
+display.addEventListener("mouseup", () => {
+  isDown = false;
+});
+
+display.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - display.offsetLeft;
+  const walk = (x - startX) * 2; // scroll speed
+  display.scrollLeft = scrollLeft - walk;
+});

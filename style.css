@@ -1,9 +1,10 @@
+
 body{
     background-color: black;
     height: 100vh;
     place-items: center;
     place-content: center;
-    
+    font-family: "Orbitron", sans-serif;
 }
 
 .outline{
@@ -53,5 +54,33 @@ button{
 }
 
 .display{
-    height: 50%;
+    color: rgb(43, 48, 48);
+    height: 40px;
+    margin: 10px;
+    font-size: larger;
+    overflow-x: auto;      /* allow horizontal scroll */
+    overflow-y: hidden;    /* no vertical scroll */
+    white-space: nowrap;   /* keep numbers in one line */
+    scroll-behavior: smooth;
+    text-align: right;   
+    direction: ltr;      /* keep numbers normal */
+}
+
+.display::-webkit-scrollbar {
+  height: 0px;
+}
+
+.answer{
+    margin: 10px;
+    font-size: larger;
+    overflow-x: auto;      /* allow horizontal scroll */
+    overflow-y: hidden;    /* no vertical scroll */
+    white-space: nowrap;   /* keep numbers in one line */
+    scroll-behavior: smooth;
+    text-align: right;   
+    direction: ltr;      /* keep numbers normal */
+}
+
+.answer::-webkit-scrollbar {
+  height: 0px;
 }
