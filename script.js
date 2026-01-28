@@ -21,6 +21,8 @@ let secondNum = "";
 let operator = "";
 let lastOperator = "";
 let lastsecondNum = "";
+let justCalculated = false;
+
 
 buttons.forEach(function(btn){
     btn.onclick = function(){
@@ -102,19 +104,23 @@ buttons.forEach(function(btn){
 
                 answer.innerText = result;
                 firstNum = result.toString();
+                justCalculated = true;
                 break;
 
             default:
-                if (!operator){
-                    firstNum += value;
+                // If user starts typing after result, reset
+                if (justCalculated) {
+                firstNum = value;
+                justCalculated = false;
+                }
+                else if (!operator) {
+                firstNum += value;
                 }
                 else {
-                    secondNum += value;
+                secondNum += value;
                 }
 
-                updateDisplay(firstNum + operator + secondNum);
-
-
+                display.innerText = firstNum + operator + secondNum;
                 }
 
         }
